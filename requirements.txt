@@ -7,3 +7,4 @@ plotly
 pymysql
 streamlit-tags
 Pillow
+youtube_dl
