@@ -141,7 +141,6 @@ def run():
             if resume_data:
                 ## Get the whole resume data
                 resume_text = pdf_reader(save_image_path)
-
                 st.header("**Resume Analysis**")
                 st.success("Hello "+ resume_data['name'])
                 st.subheader("**Your Basic info**")
@@ -163,11 +162,11 @@ def run():
                     cand_level = "Experienced"
                     st.markdown('''<h4 style='text-align: left; color: #fba171;'>You are at experience level!''',unsafe_allow_html=True)
 
-                st.subheader("**Skills Recommendation💡**")
+                # st.subheader("**Skills Recommendation💡**")
                 ## Skill shows
                 keywords = st_tags(label='### Skills that you have',
                 text='See our skills recommendation',
-                    value=resume_data['skills'],key = '1')
+                    value=resume_data['skills'],key = '2')
 
                 ##  recommendation
                 ds_keyword = ['tensorflow','keras','pytorch','machine learning','deep Learning','flask','streamlit']
@@ -252,36 +251,50 @@ def run():
                 ### Resume writing recommendation
                 st.subheader("**Resume Tips & Ideas💡**")
                 resume_score = 0
-                if 'Objective' in resume_text:
-                    resume_score = resume_score+20
-                    st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have added Objective</h4>''',unsafe_allow_html=True)
+                if 'Algorithms' in resume_data['skills']:
+                    resume_score = resume_score+10
+                    st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have knowledge of Advanced Data Structures</h4>''',unsafe_allow_html=True)
                 else:
-                    st.markdown('''<h4 style='text-align: left; color: #fabc10;'>[-] According to our recommendation please add your career objective, it will give your career intension to the Recruiters.</h4>''',unsafe_allow_html=True)
+                    pass
+                    # st.markdown('''<h4 style='text-align: left; color: #fabc10;'>[-] According to our recommendation please add your career objective, it will give your career intension to the Recruiters.</h4>''',unsafe_allow_html=True)
 
-                if 'Internship' or 'Experience'  in resume_text:
-                    resume_score = resume_score + 20
+                if 'Internship' or 'Experience' in resume_text:
+                    resume_score = resume_score + 5
                     st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have added Internship✍ </h4>''',unsafe_allow_html=True)
                 else:
-                    st.markdown('''<h4 style='text-align: left; color: #fabc10;'>[-] According to our recommendation please add Internship✍.</h4>''',unsafe_allow_html=True)
+                    pass
+                    # st.markdown('''<h4 style='text-align: left; color: #fabc10;'>[-] According to our recommendation please add Internship✍.</h4>''',unsafe_allow_html=True)
 
-                if 'Certifications' or 'Certificates' in resume_text:
-                    resume_score = resume_score + 20
-                    st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have added your Certificates⚽</h4>''',unsafe_allow_html=True)
+                if 'Java' in resume_data['skills']:
+                    resume_score = resume_score + 10
+                    st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have knowledge of Programming Language</h4>''',unsafe_allow_html=True)
                 else:
-                    st.markdown('''<h4 style='text-align: left; color: #fabc10;'>[-] According to our recommendation please add Certificates.</h4>''',unsafe_allow_html=True)
+                    pass
+                    # st.markdown('''<h4 style='text-align: left; color: #fabc10;'>[-] According to our recommendation please add Certificates.</h4>''',unsafe_allow_html=True)
 
-                if 'Achievements' in resume_text:
-                    resume_score = resume_score + 20
-                    st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have added your Achievements🏅 </h4>''',unsafe_allow_html=True)
+                if 'Sql' in resume_data['skills']:
+                    resume_score = resume_score + 15
+                    st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have knowledge of SQL </h4>''',unsafe_allow_html=True)
                 else:
-                    st.markdown('''<h4 style='text-align: left; color: #fabc10;'>[-] According to our recommendation please add Achievements🏅. It will show that you are capable for the required position.</h4>''',unsafe_allow_html=True)
+                    pass
+                    # st.markdown('''<h4 style='text-align: left; color: #fabc10;'>[-] According to our recommendation please add Achievements🏅. It will show that you are capable for the required position.</h4>''',unsafe_allow_html=True)
 
-                if 'Projects' in resume_text:
+                if 'Leetcode' in resume_text:
                     resume_score = resume_score + 20
-                    st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have added your Projects👨‍💻 </h4>''',unsafe_allow_html=True)
+                    st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have good problem solving skills </h4>''',unsafe_allow_html=True)
                 else:
-                    st.markdown('''<h4 style='text-align: left; color: #fabc10;'>[-] According to our recommendation please add Projects👨‍💻. It will show that you have done work related the required position or not.</h4>''',unsafe_allow_html=True)
-
+                    pass
+                    # st.markdown('''<h4 style='text-align: left; color: #fabc10;'>[-] According to our recommendation please add Projects👨‍💻. It will show that you have done work related the required position or not.</h4>''',unsafe_allow_html=True)
+                if "AWS" in resume_data['skills']:
+                    resume_score = resume_score + 20
+                    st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have knowledge of Cloud </h4>''',unsafe_allow_html=True)
+                else:
+                    pass
+                if 'Linux' in resume_data['skills']:
+                    resume_score = resume_score + 20
+                    st.markdown('''<h4 style='text-align: left; color: #1ed760;'>[+] Awesome! You have knowledge of OS </h4>''',unsafe_allow_html=True)
+                else:
+                    pass
                 st.subheader("**Resume Score📝**")
                 st.markdown(
                     """
@@ -298,11 +311,11 @@ def run():
                     score +=1
                     time.sleep(0.1)
                     my_bar.progress(percent_complete + 1)
-                st.success('** Your Resume Writing Score: ' + str(score)+'**')
-                st.warning("** Note: This score is calculated based on the content that you have added in your Resume. **")
+                st.success('** Your Resume Score: ' + str(score)+'**')
+                # st.warning("** Note: This score is calculated based on the content that you have added in your Resume. **")
                 st.balloons()
-                link_to_be_send="No"
-                if resume_score>=50:
+                link_to_be_send = "No"
+                if resume_score > 50:
                     link_to_be_send = "Yes"
 
                 insert_data(resume_data['name'], resume_data['email'], str(resume_score), timestamp,
@@ -334,6 +347,10 @@ def run():
                     webbrowser.open("www.google.com")
                 if st.button("No"):
                     webbrowser.open("https://www.shutterstock.com/image-vector/good-bye-lettering-handwritten-modern-260nw-1538196005.jpg")
+            else:
+                st.error("You Are Not Selected Available for Interview?")
+
+
     else:
         ## Admin Side
         st.success('Welcome to Admin Side')
